@@ -932,3 +932,42 @@ sitemap.append("</urlset>")
 write("sitemap.xml", "\n".join(sitemap))
 
 print(f"Built {len(all_paths)} files into {OUT.resolve()}")
+states = [
+"alabama","alaska","arizona","arkansas","california","colorado","connecticut","delaware","florida","georgia",
+"hawaii","idaho","illinois","indiana","iowa","kansas","kentucky","louisiana","maine","maryland",
+"massachusetts","michigan","minnesota","mississippi","missouri","montana","nebraska","nevada",
+"new-hampshire","new-jersey","new-mexico","new-york","north-carolina","north-dakota","ohio",
+"oklahoma","oregon","pennsylvania","rhode-island","south-carolina","south-dakota","tennessee",
+"texas","utah","vermont","virginia","washington","west-virginia","wisconsin","wyoming"
+]
+
+items = [
+"batteries","paint","electronics","books","furniture","light-bulbs",
+"bleach","cardboard","appliances","clothes","phones","toasters"
+]
+
+os.makedirs("site/state", exist_ok=True)
+
+for state in states:
+    for item in items:
+        filename = f"site/state/{state}-{item}.html"
+        html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+<title>Can I throw away {item} in {state.title()}?</title>
+<meta name="description" content="Disposal guide for {item} in {state.title()}.">
+</head>
+<body>
+
+<h1>Can I throw away {item} in {state.title()}?</h1>
+
+<p>Rules for disposing of {item} in {state.title()} vary by county and recycling program.</p>
+
+<a href="../index.html">Home</a>
+
+</body>
+</html>
+"""
+        with open(filename,"w") as f:
+            f.write(html)
