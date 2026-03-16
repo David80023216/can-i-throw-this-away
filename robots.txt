@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://david80023216.github.io/can-i-throw-this-away/sitemap.xml
